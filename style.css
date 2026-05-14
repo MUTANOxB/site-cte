@@ -1,0 +1,469 @@
+:root {
+  --azul-eduvale: #1d367f;
+  --azul-escuro: #14265c;
+  --amarelo-eduvale: #efb805;
+  --cinza-fundo: #f5f6fa;
+  --branco: #ffffff;
+  --texto-escuro: #1f1f1f;
+  --texto-claro: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.08);
+}
+
+/* Remove os espaços padrões do navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Fundo geral do site */
+body {
+  background-color: var(--cinza-fundo);
+  color: var(--texto-escuro);
+}
+
+/* Divide o menu e o conteúdo */
+.layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Menu lateral */
+.sidebar {
+  width: 270px;
+  background-color: var(--azul-eduvale);
+  color: var(--texto-claro);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+  box-shadow: 2px 0 12px var(--sombra);
+  z-index: 1000;
+}
+
+/* Fecha o menu lateral */
+.sidebar.fechado {
+  margin-left: -270px;
+}
+
+/* Área da logo */
+.sidebar-header {
+  padding: 22px 18px;
+  text-align: center;
+  border-bottom: 1px solid var(--azul-escuro);
+}
+
+/* Logo do CTE */
+.sidebar-header img {
+  width: 100%;
+  max-width: 215px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Links do menu */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 0;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--texto-claro);
+  text-decoration: none;
+  padding: 16px 25px;
+  font-size: 15px;
+  font-weight: 600;
+  border-left: 4px solid transparent;
+  transition: 0.2s ease;
+}
+
+/* Ícones do menu */
+.sidebar-nav a i {
+  width: 22px;
+  font-size: 18px;
+  color: var(--amarelo-eduvale);
+}
+
+/* Link ativo e efeito do mouse */
+.sidebar-nav a:hover,
+.sidebar-nav a.ativo {
+  background-color: var(--azul-escuro);
+  color: var(--amarelo-eduvale);
+  border-left-color: var(--amarelo-eduvale);
+}
+
+/* Área principal */
+.main-content {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barra superior */
+.top-header {
+  height: 72px;
+  background-color: var(--branco);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid var(--amarelo-eduvale);
+  box-shadow: 0 2px 8px var(--sombra);
+}
+
+/* Botão do menu */
+.btn-toggle {
+  background: none;
+  border: none;
+  color: var(--azul-eduvale);
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-toggle:hover {
+  color: var(--amarelo-eduvale);
+}
+
+/* Área do aluno */
+.user-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--azul-eduvale);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.user-menu i {
+  font-size: 25px;
+  color: var(--azul-eduvale);
+}
+
+/* Espaçamento da página */
+.page-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Esconde as abas fechadas */
+.pagina {
+  display: none;
+}
+
+/* Mostra a aba aberta */
+.pagina.ativa {
+  display: block;
+}
+
+/* Caixa de boas-vindas */
+.welcome-box {
+  background: linear-gradient(135deg, var(--azul-eduvale), var(--azul-escuro));
+  color: var(--texto-claro);
+  padding: 42px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px var(--sombra);
+  border-left: 8px solid var(--amarelo-eduvale);
+}
+
+.welcome-box h1 {
+  color: var(--amarelo-eduvale);
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.welcome-box p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Títulos das seções */
+.titulo-secao {
+  color: var(--azul-eduvale);
+  font-size: 25px;
+  font-weight: 700;
+  margin: 8px 0 24px;
+}
+
+/* Área dos cards */
+.flex-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* Cards */
+.card {
+  flex: 1 1 300px;
+  background-color: var(--branco);
+  padding: 28px;
+  border-radius: 12px;
+  border-top: 5px solid var(--azul-eduvale);
+  box-shadow: 0 5px 15px var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card i {
+  font-size: 34px;
+  color: var(--amarelo-eduvale);
+}
+
+.card h3 {
+  color: var(--azul-eduvale);
+  font-size: 20px;
+}
+
+.card p {
+  color: var(--texto-escuro);
+  font-size: 14px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* Botões dos cards */
+.btn-card {
+  align-self: flex-start;
+  background-color: var(--azul-eduvale);
+  color: var(--texto-claro);
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.btn-card:hover {
+  background-color: var(--amarelo-eduvale);
+  color: var(--azul-escuro);
+}
+
+/* Caixa de texto das abas */
+.sobre-box {
+  background-color: var(--branco);
+  padding: 35px;
+  border-radius: 12px;
+  border-left: 6px solid var(--amarelo-eduvale);
+  box-shadow: 0 5px 15px var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sobre-box h3 {
+  color: var(--azul-eduvale);
+  font-size: 22px;
+}
+
+.sobre-box p {
+  color: var(--texto-escuro);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Rodapé */
+.footer {
+  width: 100%;
+  background-color: #0d4485;
+  color: #ffffff;
+  padding: 55px 45px 22px;
+  margin-top: 40px;
+}
+
+/* Colunas do rodapé */
+.footer-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1.25fr 1.35fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* Títulos do rodapé */
+.footer-col h3 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+/* Logo do rodapé */
+.footer-logo {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+/* Informações de contato */
+.footer-info {
+  margin-bottom: 18px;
+}
+
+.footer-info p {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-info a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Mapa */
+.mapa-box {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.mapa-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Rádio */
+.audio-player {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 38px;
+}
+
+/* Link da logo do Novo FIES */
+.fies-link {
+  display: inline-block;
+  max-width: 300px;
+}
+
+/* Logo do Novo FIES */
+.fies-logo {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+.fies-logo:hover {
+  transform: scale(1.03);
+}
+
+/* Lista de notícias */
+.posts-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.posts-lista li {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.55;
+  padding: 14px 0 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+}
+
+.posts-lista li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  top: 13px;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.posts-lista li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.posts-lista li a:hover {
+  text-decoration: underline;
+}
+
+/* Copyright */
+.footer-copy {
+  color: #ffffff;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 55px;
+}
+
+/* Ajuste para tablet */
+@media (max-width: 1100px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Ajuste para celular */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+  }
+
+  .page-content {
+    padding: 24px;
+  }
+
+  .top-header {
+    padding: 0 22px;
+  }
+
+  .welcome-box {
+    padding: 30px;
+  }
+
+  .welcome-box h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .footer {
+    padding: 40px 24px 20px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .fies-logo {
+    max-width: 260px;
+  }
+}

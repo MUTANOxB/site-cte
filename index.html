@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTE - Painel Eduvale</title>
+
+  <!-- Fonte do site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ícones usados no menu e nos cards -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Arquivo CSS principal -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="layout-wrapper">
+
+    <!-- Menu lateral -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="logo-cte.png" alt="Logo Centro Tecnológico Eduvale">
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="ativo" data-page="home">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+
+        <a href="#" data-page="sobre">
+          <i class="fas fa-info-circle"></i>
+          Sobre Nós
+        </a>
+
+        <a href="#" data-page="cursos">
+          <i class="fas fa-laptop-code"></i>
+          Cursos
+        </a>
+
+        <a href="#" data-page="projetos">
+          <i class="fas fa-project-diagram"></i>
+          Meus Projetos
+        </a>
+
+        <a href="#" data-page="banco">
+          <i class="fas fa-database"></i>
+          Banco de Dados
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+
+      <!-- Barra superior -->
+      <header class="top-header">
+        <button class="btn-toggle" id="btn-toggle" title="Abrir/Fechar Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="user-menu">
+          <a href="#">
+            Área do Aluno
+            <i class="fas fa-user-circle"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- Conteúdo das abas -->
+      <section class="page-content">
+
+        <!-- Aba Home -->
+        <div class="pagina ativa" id="home">
+          <div class="welcome-box">
+            <h1>Bem-vindo ao Portal do Centro Tecnológico Eduvale</h1>
+            <p>
+              Acesse seus projetos de desenvolvimento, consulte a infraestrutura dos laboratórios
+              e gerencie suas atividades.
+            </p>
+          </div>
+
+          <h2 class="titulo-secao">Acesso Rápido</h2>
+
+          <div class="flex-cards-container">
+            <div class="card">
+              <i class="fas fa-code"></i>
+              <h3>Análise e Desenvolvimento</h3>
+              <p>
+                Acesse as ementas, práticas de laboratório e códigos de exemplo de HTML,
+                CSS e Lógica.
+              </p>
+              <a href="#" class="btn-card" data-page="cursos">Acessar Curso</a>
+            </div>
+
+            <div class="card">
+              <i class="fas fa-database"></i>
+              <h3>Projetos de Banco de Dados</h3>
+              <p>
+                Área destinada à modelagem e estruturação de tabelas, consultas e Inner Joins.
+              </p>
+              <a href="#" class="btn-card" data-page="banco">Ver Modelagens</a>
+            </div>
+
+            <div class="card">
+              <i class="fas fa-users"></i>
+              <h3>Sobre a Nossa Equipe</h3>
+              <p>
+                Conheça os alunos e desenvolvedores por trás do Centro Tecnológico.
+              </p>
+              <a href="#" class="btn-card" data-page="sobre">Conhecer</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba Sobre -->
+        <div class="pagina" id="sobre">
+          <h2 class="titulo-secao">Conheça o Projeto</h2>
+
+          <div class="sobre-box">
+            <h3>Sobre o CTE</h3>
+
+            <p>
+              O Centro Tecnológico Eduvale é um projeto voltado ao desenvolvimento de soluções
+              digitais, estudos de tecnologia e práticas relacionadas à área de análise e
+              desenvolvimento de sistemas.
+            </p>
+
+            <p>
+              Este portal tem como objetivo organizar informações, projetos, cursos e materiais
+              utilizados pelos alunos, facilitando o acesso ao conteúdo e às atividades acadêmicas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Aba Cursos -->
+        <div class="pagina" id="cursos">
+          <h2 class="titulo-secao">Cursos</h2>
+
+          <div class="sobre-box">
+            <h3>Análise e Desenvolvimento de Sistemas</h3>
+
+            <p>
+              Nesta aba ficarão os conteúdos do curso, atividades, materiais de apoio,
+              aulas práticas e projetos desenvolvidos pelos alunos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Aba Projetos -->
+        <div class="pagina" id="projetos">
+          <h2 class="titulo-secao">Meus Projetos</h2>
+
+          <div class="sobre-box">
+            <h3>Projetos dos Alunos</h3>
+
+            <p>
+              Área destinada para apresentar os projetos desenvolvidos pelos alunos do
+              Centro Tecnológico Eduvale.
+            </p>
+          </div>
+        </div>
+
+        <!-- Aba Banco de Dados -->
+        <div class="pagina" id="banco">
+          <h2 class="titulo-secao">Banco de Dados</h2>
+
+          <div class="sobre-box">
+            <h3>Modelagens e Consultas</h3>
+
+            <p>
+              Aqui ficarão os estudos sobre banco de dados, modelagem de tabelas,
+              relacionamentos, consultas SQL e Inner Joins.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Rodapé do site -->
+      <footer class="footer">
+        <div class="footer-container">
+
+          <!-- Contato -->
+          <div class="footer-col">
+            <h3>CONTATO</h3>
+
+            <img src="logo-eduvale-branca.png" alt="Logo Uneduvale" class="footer-logo">
+
+            <div class="footer-info">
+              <p><strong>Endereço:</strong></p>
+              <p>Av. Pref. Misael Euphrásio Leal, 347</p>
+              <p>Jardim América - Avaré/SP - CEP: 18705-050</p>
+              <p>
+                Link do mapa:
+                <a href="https://www.google.com/maps?q=Faculdade+Eduvale+de+Avar%C3%A9" target="_blank">
+                  clique aqui
+                </a>
+              </p>
+            </div>
+
+            <div class="footer-info">
+              <p><strong>Fones:</strong></p>
+              <p>(14) 3733.8585</p>
+              <p>(14) 3733.8383</p>
+            </div>
+
+            <div class="footer-info">
+              <p><strong>Whatsapp:</strong></p>
+              <p>(14) 9.9623.8383</p>
+            </div>
+
+            <div class="footer-info">
+              <p><strong>E-mail:</strong></p>
+              <p>comercial@eduvaleavare.com.br</p>
+            </div>
+          </div>
+
+          <!-- Mapa -->
+          <div class="footer-col">
+            <h3>LOCALIZAÇÃO</h3>
+
+            <div class="mapa-box">
+              <iframe
+                src="https://www.google.com/maps?q=Faculdade+Eduvale+de+Avar%C3%A9&output=embed"
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Rádio e FIES -->
+          <div class="footer-col">
+            <h3>OUÇA A RÁDIO ESCOLA</h3>
+
+            <audio controls class="audio-player">
+              <source src="#" type="audio/mpeg">
+              Seu navegador não suporta áudio.
+            </audio>
+
+            <a href="https://sisfiesportal.mec.gov.br/" target="_blank" class="fies-link">
+              <img src="LogoTIPO-NOVO-FIES-UNEDUVALE.png" alt="Novo FIES UNEDUVALE" class="fies-logo">
+            </a>
+          </div>
+
+          <!-- Notícias -->
+          <div class="footer-col">
+            <h3>POSTS RECENTES</h3>
+
+            <ul class="posts-lista" id="lista-noticias">
+              <li>Carregando notícias...</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-copy">
+          Copyright © 2026 Centro Universitário Eduvale - UNEDUVALE. Todos os direitos reservados.
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- JS do menu e das abas -->
+  <script>
+    const btnToggle = document.getElementById('btn-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const linksAbas = document.querySelectorAll('[data-page]');
+    const paginas = document.querySelectorAll('.pagina');
+
+    // Abre e fecha o menu lateral
+    btnToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('fechado');
+    });
+
+    // Troca o conteúdo aberto
+    function abrirPagina(nomePagina) {
+      paginas.forEach(pagina => {
+        pagina.classList.remove('ativa');
+      });
+
+      const paginaEscolhida = document.getElementById(nomePagina);
+
+      if (paginaEscolhida) {
+        paginaEscolhida.classList.add('ativa');
+      }
+
+      document.querySelectorAll('.sidebar-nav a').forEach(link => {
+        link.classList.remove('ativo');
+
+        if (link.getAttribute('data-page') === nomePagina) {
+          link.classList.add('ativo');
+        }
+      });
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Faz os botões abrirem as abas
+    linksAbas.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+
+        const pagina = link.getAttribute('data-page');
+        abrirPagina(pagina);
+      });
+    });
+  </script>
+
+  <!-- JS das notícias do rodapé -->
+  <script>
+    const listaNoticias = document.getElementById('lista-noticias');
+
+    // Notícias fixas caso o RSS não carregue
+    const noticiasPadrao = [
+      {
+        titulo: 'Empreendedorismo e internacionalização são tema de palestra no UNEDUVALE',
+        link: 'https://www.eduvaleavare.com.br/'
+      },
+      {
+        titulo: 'Calouros de Educação Física desenvolvem projeto de alongamento e mobilidade',
+        link: 'https://www.eduvaleavare.com.br/'
+      },
+      {
+        titulo: 'UNEDUVALE apoia mais uma edição da Festa do Trabalhador de Itatinga',
+        link: 'https://www.eduvaleavare.com.br/'
+      },
+      {
+        titulo: 'UNEDUVALE promove Encontro de Desenho Urbano em Avaré',
+        link: 'https://www.eduvaleavare.com.br/'
+      },
+      {
+        titulo: 'Ciências Biológicas UNEDUVALE protagoniza edição da GINCABIO',
+        link: 'https://www.eduvaleavare.com.br/'
+      }
+    ];
+
+    // Mostra as notícias na tela
+    function mostrarNoticias(noticias) {
+      listaNoticias.innerHTML = '';
+
+      noticias.slice(0, 5).forEach(noticia => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+
+        link.href = noticia.link;
+        link.textContent = noticia.titulo;
+        link.target = '_blank';
+
+        item.appendChild(link);
+        listaNoticias.appendChild(item);
+      });
+    }
+
+    // Tenta buscar as notícias do site da Eduvale
+    async function carregarNoticias() {
+      try {
+        const feedUrl = 'https://www.eduvaleavare.com.br/feed/';
+        const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+
+        const resposta = await fetch(apiUrl);
+        const dados = await resposta.json();
+
+        if (!dados.items || dados.items.length === 0) {
+          mostrarNoticias(noticiasPadrao);
+          return;
+        }
+
+        const noticias = dados.items.map(item => {
+          return {
+            titulo: item.title,
+            link: item.link
+          };
+        });
+
+        mostrarNoticias(noticias);
+      } catch (erro) {
+        mostrarNoticias(noticiasPadrao);
+      }
+    }
+
+    carregarNoticias();
+  </script>
+</body>
+</html>
