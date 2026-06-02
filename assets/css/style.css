@@ -136,16 +136,6 @@ body {
   color: var(--amarelo-eduvale);
 }
 
-/* Área do aluno */
-.user-menu a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--azul-eduvale);
-  text-decoration: none;
-  font-weight: 700;
-}
-
 .user-menu i {
   font-size: 25px;
   color: var(--azul-eduvale);
@@ -466,4 +456,42 @@ body {
   .fies-logo {
     max-width: 260px;
   }
+}
+
+/* Projeto */
+.projeto-card {
+  gap: 20px;
+}
+
+.galeria-projeto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.galeria-projeto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--sombra);
+  transition: transform 0.2s ease;
+}
+
+.galeria-projeto img:hover {
+  transform: scale(1.02);
+}
+
+/* Placeholder temporário */
+.foto-placeholder {
+  height: 220px;
+  border: 2px dashed var(--azul-eduvale);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fc;
+  color: var(--azul-eduvale);
+  font-weight: 600;
 }
