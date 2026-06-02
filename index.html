@@ -27,30 +27,36 @@
       </div>
 
       <nav class="sidebar-nav">
-        <a href="#" class="ativo" data-page="home">
+        <a href="#" onclick="carregarPagina('home')">
           <i class="fas fa-home"></i>
           Home
         </a>
 
-        <a href="#" data-page="sobre">
+        <a href="#" onclick="carregarPagina('institucional')">
           <i class="fas fa-info-circle"></i>
-          Sobre Nós
+          Institucional
         </a>
 
-        <a href="#" data-page="cursos">
+        <a href="#" onclick="carregarPagina('cursos')">
           <i class="fas fa-laptop-code"></i>
           Cursos
         </a>
 
-        <a href="#" data-page="projetos">
+        <a href="#" onclick="carregarPagina('projetos')">
           <i class="fas fa-project-diagram"></i>
-          Meus Projetos
+          Projetos
         </a>
 
-        <a href="#" data-page="banco">
-          <i class="fas fa-database"></i>
-          Banco de Dados
+        <a href="#" onclick="carregarPagina('docentes')">
+          <i class="fas fa-chalkboard-teacher"></i>
+          Docentes
         </a>
+        
+        <a href="#" onclick="carregarPagina('agenda')">
+          <i class="fa-regular fa-calendar"></i>
+          Agenda
+        </a>
+
       </nav>
     </aside>
 
@@ -62,124 +68,10 @@
         <button class="btn-toggle" id="btn-toggle" title="Abrir/Fechar Menu">
           <i class="fas fa-bars"></i>
         </button>
-
-        <div class="user-menu">
-          <a href="#">
-            Área do Aluno
-            <i class="fas fa-user-circle"></i>
-          </a>
-        </div>
       </header>
 
       <!-- Conteúdo das abas -->
-      <section class="page-content">
-
-        <!-- Aba Home -->
-        <div class="pagina ativa" id="home">
-          <div class="welcome-box">
-            <h1>Bem-vindo ao Portal do Centro Tecnológico Eduvale</h1>
-            <p>
-              Acesse seus projetos de desenvolvimento, consulte a infraestrutura dos laboratórios
-              e gerencie suas atividades.
-            </p>
-          </div>
-
-          <h2 class="titulo-secao">Acesso Rápido</h2>
-
-          <div class="flex-cards-container">
-            <div class="card">
-              <i class="fas fa-code"></i>
-              <h3>Análise e Desenvolvimento</h3>
-              <p>
-                Acesse as ementas, práticas de laboratório e códigos de exemplo de HTML,
-                CSS e Lógica.
-              </p>
-              <a href="#" class="btn-card" data-page="cursos">Acessar Curso</a>
-            </div>
-
-            <div class="card">
-              <i class="fas fa-database"></i>
-              <h3>Projetos de Banco de Dados</h3>
-              <p>
-                Área destinada à modelagem e estruturação de tabelas, consultas e Inner Joins.
-              </p>
-              <a href="#" class="btn-card" data-page="banco">Ver Modelagens</a>
-            </div>
-
-            <div class="card">
-              <i class="fas fa-users"></i>
-              <h3>Sobre a Nossa Equipe</h3>
-              <p>
-                Conheça os alunos e desenvolvedores por trás do Centro Tecnológico.
-              </p>
-              <a href="#" class="btn-card" data-page="sobre">Conhecer</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Aba Sobre -->
-        <div class="pagina" id="sobre">
-          <h2 class="titulo-secao">Conheça o Projeto</h2>
-
-          <div class="sobre-box">
-            <h3>Sobre o CTE</h3>
-
-            <p>
-              O Centro Tecnológico Eduvale é um projeto voltado ao desenvolvimento de soluções
-              digitais, estudos de tecnologia e práticas relacionadas à área de análise e
-              desenvolvimento de sistemas.
-            </p>
-
-            <p>
-              Este portal tem como objetivo organizar informações, projetos, cursos e materiais
-              utilizados pelos alunos, facilitando o acesso ao conteúdo e às atividades acadêmicas.
-            </p>
-          </div>
-        </div>
-
-        <!-- Aba Cursos -->
-        <div class="pagina" id="cursos">
-          <h2 class="titulo-secao">Cursos</h2>
-
-          <div class="sobre-box">
-            <h3>Análise e Desenvolvimento de Sistemas</h3>
-
-            <p>
-              Nesta aba ficarão os conteúdos do curso, atividades, materiais de apoio,
-              aulas práticas e projetos desenvolvidos pelos alunos.
-            </p>
-          </div>
-        </div>
-
-        <!-- Aba Projetos -->
-        <div class="pagina" id="projetos">
-          <h2 class="titulo-secao">Meus Projetos</h2>
-
-          <div class="sobre-box">
-            <h3>Projetos dos Alunos</h3>
-
-            <p>
-              Área destinada para apresentar os projetos desenvolvidos pelos alunos do
-              Centro Tecnológico Eduvale.
-            </p>
-          </div>
-        </div>
-
-        <!-- Aba Banco de Dados -->
-        <div class="pagina" id="banco">
-          <h2 class="titulo-secao">Banco de Dados</h2>
-
-          <div class="sobre-box">
-            <h3>Modelagens e Consultas</h3>
-
-            <p>
-              Aqui ficarão os estudos sobre banco de dados, modelagem de tabelas,
-              relacionamentos, consultas SQL e Inner Joins.
-            </p>
-          </div>
-        </div>
-
-      </section>
+      <section id="conteudo-principal"></section>
 
       <!-- Rodapé do site -->
       <footer class="footer">
@@ -314,6 +206,23 @@
         const pagina = link.getAttribute('data-page');
         abrirPagina(pagina);
       });
+    });
+
+    // Carregar Pagina
+    async function carregarPagina(nomePagina) {
+
+      const resposta =
+          await fetch(`pages/${nomePagina}.html`);
+
+      const conteudo =
+          await resposta.text();
+
+      document.getElementById(
+          "conteudo-principal"
+      ).innerHTML = conteudo;
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+    carregarPagina('home');
     });
   </script>
 
