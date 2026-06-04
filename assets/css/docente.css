@@ -1,0 +1,33 @@
+.titulo-pagina {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.docentes-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card-docente {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card-docente img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card-docente h2 {
+  margin: 10px 0 5px;
+}
+
+.card-docente .area {
+  font-weight: bold;
+  color: #271083;
+}

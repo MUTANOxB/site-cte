@@ -495,3 +495,50 @@ body {
   color: var(--azul-eduvale);
   font-weight: 600;
 }
+/* LISTA DE DOCENTES */
+.lista-docentes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ITEM DA LISTA */
+.docente-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--branco);
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--sombra);
+  transition: 0.2s ease;
+}
+
+.docente-item:hover {
+  transform: translateY(-2px);
+}
+
+/* FOTO */
+.foto-docente {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* INFORMAÇÕES */
+.docente-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.docente-info h3 {
+  color: var(--azul-eduvale);
+  font-size: 18px;
+}
+
+.docente-info p {
+  font-size: 14px;
+  color: var(--texto-escuro);
+}
