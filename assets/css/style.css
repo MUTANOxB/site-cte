@@ -734,6 +734,7 @@ body {
   position: fixed;
   left: 0;
   top: 0;
+  margin-left: 0;
   z-index: 1000;
   transition: transform 0.3s ease;
   overflow-y: auto;
@@ -752,6 +753,7 @@ body {
 
 /* Desktop: menu pode ser minimizado */
 .sidebar.fechado {
+  margin-left: 0;
   transform: translateX(-100%);
 }
 
@@ -779,6 +781,7 @@ body {
   }
 
   .sidebar {
+    margin-left: 0;
     transform: translateX(-100%);
     width: 280px;
     min-width: 280px;
@@ -786,6 +789,7 @@ body {
   }
 
   .sidebar.aberto {
+    margin-left: 0;
     transform: translateX(0);
   }
 
