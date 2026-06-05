@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <!-- Arquivo CSS principal -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20260605-3">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260605-5">
 </head>
 
 <body>
@@ -277,6 +277,25 @@
       }
     }
 
+    function abrirAbaCurso(nomeAba) {
+      const moduloCursos = document.getElementById('modulo-cursos');
+
+      if (!moduloCursos) {
+        return;
+      }
+
+      const abas = moduloCursos.querySelectorAll('.curso-tab');
+      const botoes = moduloCursos.querySelectorAll('[data-course-tab]');
+
+      abas.forEach(aba => {
+        aba.classList.toggle('ativo', aba.id === nomeAba);
+      });
+
+      botoes.forEach(botao => {
+        botao.classList.toggle('ativo', botao.getAttribute('data-course-tab') === nomeAba);
+      });
+    }
+
     linksAbas.forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault();
@@ -307,6 +326,16 @@
       }
 
       filtrarCursos(botaoFiltro.getAttribute('data-course-filter'));
+    });
+
+    document.addEventListener('click', event => {
+      const botaoAbaCurso = event.target.closest('[data-course-tab]');
+
+      if (!botaoAbaCurso) {
+        return;
+      }
+
+      abrirAbaCurso(botaoAbaCurso.getAttribute('data-course-tab'));
     });
 
     window.addEventListener('DOMContentLoaded', () => {

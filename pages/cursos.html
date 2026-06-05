@@ -1,6 +1,12 @@
 <h2 class="titulo-secao">Cursos</h2>
 
 <section class="sobre-box modulo-cursos" id="modulo-cursos">
+  <div class="abas-cursos" role="tablist" aria-label="Abas do módulo de cursos">
+    <button type="button" class="ativo" data-course-tab="visao-geral">Visão geral</button>
+    <button type="button" data-course-tab="matriz-curricular">Matriz curricular</button>
+  </div>
+
+  <div class="curso-tab ativo" id="visao-geral">
   <div class="cursos-cabecalho">
     <div>
       <h3>Análise e Desenvolvimento de Sistemas</h3>
@@ -80,4 +86,170 @@
   <p class="mensagem-filtro" id="mensagem-filtro" hidden>
     Nenhum curso encontrado para essa categoria.
   </p>
+  </div>
+
+  <div class="curso-tab" id="matriz-curricular">
+    <div class="matriz-cabecalho">
+      <div>
+        <h3>Matriz Curricular</h3>
+        <p>Representação gráfica do perfil de formação do curso, conforme matriz curricular da Eduvale.</p>
+      </div>
+
+      <span class="matriz-total">Total: 2.080 horas</span>
+    </div>
+
+    <div class="termos-grid">
+      <article class="termo-card">
+        <h4>1º semestre <span>340 horas</span></h4>
+        <ul>
+          <li><span>Matemática Aplicada</span><strong>60h</strong></li>
+          <li><span>Arquitetura e Organização de Computadores</span><strong>60h</strong></li>
+          <li><span>Introdução a Sistemas de Informação</span><strong>60h</strong></li>
+          <li><span>Aplicações para a WEB I</span><strong>60h</strong></li>
+          <li><span>Fundamentos e Modelagem de Bancos de Dados</span><strong>60h</strong></li>
+          <li><span>Atividades Complementares I</span><strong>40h</strong></li>
+        </ul>
+      </article>
+
+      <article class="termo-card">
+        <h4>2º semestre <span>340 horas</span></h4>
+        <ul>
+          <li><span>Comunicação Oral e Escrita</span><strong>60h</strong></li>
+          <li><span>Engenharia de Software I</span><strong>60h</strong></li>
+          <li><span>Algoritmos e Lógica de Programação</span><strong>60h</strong></li>
+          <li><span>Sistemas Operacionais</span><strong>60h</strong></li>
+          <li><span>Sistemas de Gerenciamento de Bancos de Dados</span><strong>60h</strong></li>
+          <li><span>Atividades Complementares II</span><strong>40h</strong></li>
+        </ul>
+      </article>
+
+      <article class="termo-card">
+        <h4>3º semestre <span>340 horas</span></h4>
+        <ul>
+          <li><span>Sociedade e Tecnologia da Informação</span><strong>60h</strong></li>
+          <li><span>Estruturas de Dados</span><strong>60h</strong></li>
+          <li><span>Desenvolvimento de Software I</span><strong>60h</strong></li>
+          <li><span>Programação Orientada a Objetos I</span><strong>60h</strong></li>
+          <li><span>Técnicas e Linguagem para Bancos de Dados</span><strong>60h</strong></li>
+          <li><span>Atividades Complementares III</span><strong>40h</strong></li>
+        </ul>
+      </article>
+
+      <article class="termo-card">
+        <h4>4º semestre <span>340 horas</span></h4>
+        <ul>
+          <li><span>Engenharia de Software II</span><strong>60h</strong></li>
+          <li><span>Programação Orientada a Objetos II</span><strong>60h</strong></li>
+          <li><span>Aplicações para a Web II</span><strong>60h</strong></li>
+          <li><span>Redes de Comunicação de Dados</span><strong>60h</strong></li>
+          <li><span>Estatística Aplicada</span><strong>60h</strong></li>
+          <li><span>Atividades Complementares IV</span><strong>40h</strong></li>
+        </ul>
+      </article>
+
+      <article class="termo-card">
+        <h4>5º semestre <span>360 horas</span></h4>
+        <ul>
+          <li><span>Metodologia da Pesquisa Científica</span><strong>60h</strong></li>
+          <li><span>Desenvolvimento de Software II</span><strong>60h</strong></li>
+          <li><span>Tecnologias para Dispositivos Móveis</span><strong>60h</strong></li>
+          <li><span>Aplicações para Web III</span><strong>60h</strong></li>
+          <li><span>Empreendedorismo e Gestão Empresarial</span><strong>60h</strong></li>
+          <li><span>Atividades Complementares V</span><strong>60h</strong></li>
+        </ul>
+      </article>
+
+      <article class="termo-card">
+        <h4>6º semestre <span>360 horas</span></h4>
+        <ul>
+          <li><span>Inteligência Artificial e Aplicações</span><strong>60h</strong></li>
+          <li><span>Governança de Tecnologia da Informação</span><strong>60h</strong></li>
+          <li><span>Laboratório de Desenvolvimento de Sistemas</span><strong>60h</strong></li>
+          <li><span>Análise e Projeto de Sistemas</span><strong>60h</strong></li>
+          <li><span>Projetos de Integração de Tecnologias</span><strong>60h</strong></li>
+          <li><span>Atividades Complementares VI</span><strong>60h</strong></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="tcc-matriz">
+      <i class="fa-solid fa-graduation-cap"></i>
+      <span>Trabalho de Conclusão de Curso</span>
+    </div>
+
+    <div class="resumo-matriz">
+      <h4>Resumo do curso</h4>
+      <ul>
+        <li><span>Total de horas de aula</span><strong>1.800h</strong></li>
+        <li><span>Atividades complementares</span><strong>280h</strong></li>
+        <li><span>Total geral</span><strong>2.080h</strong></li>
+      </ul>
+    </div>
+
+    <div class="eixos-matriz">
+      <h4>Eixos de formação</h4>
+      <div class="tabela-cursos-box">
+        <table class="tabela-cursos tabela-eixos">
+          <thead>
+            <tr>
+              <th>Eixo</th>
+              <th>Carga horária</th>
+              <th>Participação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Eixo">Base / Apoio / Núcleo Comum</td>
+              <td data-label="Carga horária">240h</td>
+              <td data-label="Participação">11%</td>
+            </tr>
+            <tr>
+              <td data-label="Eixo">Infraestrutura (Hardware/Sistemas/Redes)</td>
+              <td data-label="Carga horária">180h</td>
+              <td data-label="Participação">9%</td>
+            </tr>
+            <tr>
+              <td data-label="Eixo">Programação (Técnicas e Linguagens)</td>
+              <td data-label="Carga horária">720h</td>
+              <td data-label="Participação">35%</td>
+            </tr>
+            <tr>
+              <td data-label="Eixo">Arquitetura e Engenharia de Software</td>
+              <td data-label="Carga horária">120h</td>
+              <td data-label="Participação">6%</td>
+            </tr>
+            <tr>
+              <td data-label="Eixo">Persistência de Dados</td>
+              <td data-label="Carga horária">180h</td>
+              <td data-label="Participação">9%</td>
+            </tr>
+            <tr>
+              <td data-label="Eixo">Projetos de Prática Profissional</td>
+              <td data-label="Carga horária">180h</td>
+              <td data-label="Participação">9%</td>
+            </tr>
+            <tr>
+              <td data-label="Eixo">Atividades Complementares</td>
+              <td data-label="Carga horária">280h</td>
+              <td data-label="Participação">12%</td>
+            </tr>
+            <tr>
+              <td data-label="Eixo">Gestão / Tecnologia</td>
+              <td data-label="Carga horária">180h</td>
+              <td data-label="Participação">9%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="optativas-matriz">
+      <h4>Optativas - Disciplinas de Enriquecimento Curricular</h4>
+      <ul>
+        <li><span>Introdução à Libras</span><strong>60h</strong></li>
+        <li><span>Sistemas Distribuídos</span><strong>60h</strong></li>
+        <li><span>Direito Digital</span><strong>60h</strong></li>
+      </ul>
+    </div>
+  </div>
 </section>
