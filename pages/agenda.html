@@ -1,163 +1,71 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda Escolar - CTE Eduvale</title>
-  <!-- Link para a fonte Open Sans exigida pelo CSS -->
-  <link href="https://googleapis.com" rel="stylesheet">
-  <!-- Ícones do Font Awesome para renderizar os seletores "i" do seu CSS -->
-  <link rel="stylesheet" href="https://cloudflare.com">
-  <!-- Link para o seu arquivo CSS (substitua pelo seu caminho real se necessário) -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!-- Aba Agenda -->
 
-  <div class="layout-wrapper">
-    
- 
-    <!-- ÁREA PRINCIPAL (Main Content) -->
-    <main class="main-content">
-      
-      
-      </header>
+<div class="welcome-box">
+  <h1>Agenda Escolar Digital</h1>
+  <p>
+    Bem-vindo à sua central de compromissos acadêmicos. Fique por dentro de
+    datas de avaliações, entregas de projetos e eventos escolares do CTE Eduvale.
+  </p>
+</div>
 
-      <!-- CONTEÚDO DA PÁGINA (Page Content) -->
-      <div class="page-content">
-        
-        <!-- ABA ATIVA: AGENDA ESCOLAR -->
-        <section class="pagina ativa">
-          
-          <!-- Caixa de boas-vindas -->
-          <div class="welcome-box">
-            <h1>Agenda Escolar Digital</h1>
-            <p>Bem-vindo à sua central de compromissos acadêmicos. Fique por dentro de todas as datas de avaliações, entregas de projetos e eventos escolares do CTE Eduvale.</p>
-          </div>
+<h2 class="titulo-secao">Compromissos Recentes</h2>
 
-          <h2 class="titulo-secao">Compromissos Recentes</h2>
-
-          <!-- Área dos cards de eventos da agenda -->
-          <div class="flex-cards-container">
-            
-            <!-- Card 1 -->
-            <div class="card">
-              <i class="fa-solid fa-pen-ruler"></i>
-              <h3>Prova Bimestral</h3>
-              <p>Avaliação oficial de Matemática do primeiro bimestre. Conteúdo: Funções de Primeiro Grau e Trigonometria básica.</p>
-              <a href="#" class="btn-card">Ver Detalhes</a>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="card">
-              <i class="fa-solid fa-users"></i>
-              <h3>Entrega de Projeto</h3>
-              <p>Prazo final para o envio do relatório de desenvolvimento do projeto interdisciplinar utilizando as diretrizes acadêmicas.</p>
-              <a href="#" class="btn-card">Acessar Entrega</a>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="card">
-              <i class="fa-solid fa-flask"></i>
-              <h3>Feira de Ciências</h3>
-              <p>Apresentação pública dos experimentos práticos nos laboratórios avançados. Presença obrigatória para computação de horas.</p>
-              <a href="#" class="btn-card">Cronograma</a>
-            </div>
-
-          </div>
-
-          <!-- Seção de Avisos Importantes (Sobre-box) -->
-          <div class="sobre-box" style="margin-top: 30px;">
-            <h3><i class="fa-solid fa-triangle-exclamation" style="color: var(--amarelo-eduvale); margin-right: 10px;"></i> Avisos Importantes</h3>
-            <p>Lembre-se de que qualquer alteração de data nas avaliações será notificada preventivamente nesta plataforma. Mantenha os seus dados cadastrais e canais de contato sempre atualizados na secretaria escolar.</p>
-          </div>
-
-          <!-- Demonstração dos elementos de Projeto e Galeria do CSS -->
-          <h2 class="titulo-secao" style="margin-top: 40px;">Galeria de Eventos do CTE</h2>
-          <div class="card projeto-card">
-            <div class="galeria-projeto">
-              <img src="https://placeholder.com" alt="Espaço Laboratório">
-              <img src="https://placeholder.com" alt="Biblioteca Digital">
-              <div class="foto-placeholder">
-                <span style="color: var(--azul-eduvale); font-weight: 600;"><i class="fa-solid fa-camera"></i> Nova Foto em Breve</span>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-      </div>
-
-      <!-- RODAPÉ (Footer) -->
-      <footer class="footer">
-        <div class="footer-container">
-          
-          <!-- Coluna 1: Logo e Infos -->
-          <div class="footer-col">
-            <img class="footer-logo" src="https://placeholder.com" alt="Logo Footer">
-            <div class="footer-info">
-              <p><strong>Telefone:</strong> (14) 3711-1300</p>
-              <p><strong>E-mail:</strong> <a href="mailto:contato@eduvale.edu.br">contato@eduvale.edu.br</a></p>
-            </div>
-          </div>
-
-          <!-- Coluna 2: Links / Notícias -->
-          <div class="footer-col">
-            <h3>Últimas Notícias</h3>
-            <ul class="posts-lista">
-              <li><a href="#">Inscrições abertas para o ProUni 2026</a></li>
-              <li><a href="#">Início do calendário de rematrículas</a></li>
-              <li><a href="#">Horários das aulas práticas nos laboratórios</a></li>
-            </ul>
-          </div>
-
-          <!-- Coluna 3: Rádio e Novo FIES -->
-          <div class="footer-col">
-            <h3>Rádio Eduvale</h3>
-            <div class="audio-player">
-              <!-- Player de Áudio Padrão utilizando a classe do seu CSS -->
-              <audio controls style="width: 100%;">
-                <source src="" type="audio/mpeg">
-                Seu navegador não suporta o elemento de áudio.
-              </audio>
-            </div>
-            <h3>Financiamento</h3>
-            <a href="#" class="fies-link">
-              <img class="fies-logo" src="https://placeholder.com" alt="Novo FIES">
-            </a>
-          </div>
-
-          <!-- Coluna 4: Localização / Mapa -->
-          <div class="footer-col">
-            <h3>Nossa Localização</h3>
-            <div class="mapa-box">
-              <!-- Iframe integrado à caixa estruturada do CSS -->
-              <iframe 
-                src="https://google.com" 
-                allowfullscreen="" 
-                loading="lazy">
-              </iframe>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Copyright -->
-        <div class="footer-copy">
-          <p>&copy; 2026 CTE Eduvale - Todos os direitos reservados.</p>
-        </div>
-      </footer>
-
-    </main>
+<div class="flex-cards-container">
+  <div class="card">
+    <i class="fa-solid fa-pen-ruler"></i>
+    <h3>Prova Bimestral</h3>
+    <p>
+      Avaliação oficial de Matemática do primeiro bimestre. Conteúdo: Funções
+      de Primeiro Grau e Trigonometria básica.
+    </p>
+    <a href="#" class="btn-card">Ver Detalhes</a>
   </div>
 
-  <!-- JAVASCRIPT: Controle para abrir e fechar a sidebar baseado na classe .fechado -->
-  <script>
-    const btnToggle = document.getElementById('btnToggle');
-    const sidebar = document.getElementById('sidebar');
+  <div class="card">
+    <i class="fa-solid fa-users"></i>
+    <h3>Entrega de Projeto</h3>
+    <p>
+      Prazo final para o envio do relatório de desenvolvimento do projeto
+      interdisciplinar utilizando as diretrizes acadêmicas.
+    </p>
+    <a href="#" class="btn-card">Acessar Entrega</a>
+  </div>
 
-    btnToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('fechado');
-    });
-  </script>
-</body>
-</html>
+  <div class="card">
+    <i class="fa-solid fa-flask"></i>
+    <h3>Feira de Ciências</h3>
+    <p>
+      Apresentação pública dos experimentos práticos nos laboratórios avançados.
+      Presença obrigatória para computação de horas.
+    </p>
+    <a href="#" class="btn-card">Cronograma</a>
+  </div>
+</div>
+
+<div class="sobre-box agenda-aviso">
+  <h3>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Avisos Importantes
+  </h3>
+  <p>
+    Lembre-se de que qualquer alteração de data nas avaliações será notificada
+    preventivamente nesta plataforma. Mantenha os seus dados cadastrais e canais
+    de contato sempre atualizados na secretaria escolar.
+  </p>
+</div>
+
+<h2 class="titulo-secao">Galeria de Eventos do CTE</h2>
+
+<div class="card projeto-card">
+  <div class="galeria-projeto">
+    <div class="foto-placeholder">
+      <span><i class="fa-solid fa-camera"></i> Nova foto em breve</span>
+    </div>
+    <div class="foto-placeholder">
+      <span><i class="fa-solid fa-camera"></i> Nova foto em breve</span>
+    </div>
+    <div class="foto-placeholder">
+      <span><i class="fa-solid fa-camera"></i> Nova foto em breve</span>
+    </div>
+  </div>
+</div>

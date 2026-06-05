@@ -1,13 +1,83 @@
 <h2 class="titulo-secao">Cursos</h2>
 
-<div class="sobre-box">
+<section class="sobre-box modulo-cursos" id="modulo-cursos">
+  <div class="cursos-cabecalho">
+    <div>
+      <h3>Análise e Desenvolvimento de Sistemas</h3>
+      <p>
+        Curso superior de tecnologia voltado à formação de profissionais para
+        analisar, desenvolver, implantar, gerenciar e manter sistemas de informação.
+      </p>
+    </div>
 
-    <h3>Formação e Capacitação</h3>
+    <div class="filtro-cursos" aria-label="Filtro por categoria">
+      <button type="button" class="ativo" data-course-filter="todos">Todos</button>
+      <button type="button" data-course-filter="Tecnologia">Tecnologia</button>
+    </div>
+  </div>
 
-    <p>
-        Explore os cursos disponíveis, conheça suas descrições, carga horária
-        e conteúdos abordados, além de informações que auxiliam no desenvolvimento
-        acadêmico e profissional dos estudantes.
-    </p>
+  <div class="lista-cursos" id="lista-cursos">
+    <article class="curso-card" data-categoria="Tecnologia">
+      <div class="curso-card-topo">
+        <span class="curso-categoria">Tecnologia</span>
+        <span class="curso-carga">2.080 horas</span>
+      </div>
 
-</div>
+      <h3>Análise e Desenvolvimento de Sistemas</h3>
+
+      <p>
+        O tecnólogo em Análise e Desenvolvimento de Sistemas atua com projetos de
+        sistemas computacionais locais, em rede e para dispositivos móveis. A
+        formação trabalha raciocínio lógico, linguagens de programação,
+        documentação, testes, implantação, manutenção, qualidade, usabilidade,
+        integridade, segurança e soluções com inteligência artificial.
+      </p>
+
+      <ul class="curso-lista">
+        <li>Titulação: Tecnólogo em Análise e Desenvolvimento de Sistemas</li>
+        <li>Duração: 3 anos</li>
+        <li>Período: noturno</li>
+        <li>Coordenador: Diego Moraes</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="tabela-cursos-box">
+    <table class="tabela-cursos">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Categoria</th>
+          <th>Carga horária</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-categoria="Tecnologia">
+          <td>Análise e Desenvolvimento de Sistemas</td>
+          <td>Tecnologia</td>
+          <td>2.080 horas</td>
+          <td>
+            Formação para análise, desenvolvimento, documentação, teste,
+            implantação e manutenção de sistemas computacionais, incluindo
+            aplicações web, dispositivos móveis, segurança e inteligência artificial.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dados-mec" data-categoria="Tecnologia">
+    <h3>Informações do curso</h3>
+
+    <ul>
+      <li><strong>Ato de autorização:</strong> Portaria nº 3.706 de 16/11/2004, publicada no DOU em 17/11/2004.</li>
+      <li><strong>Renovação de reconhecimento:</strong> Portaria nº 151 de 21/06/2023, publicada no DOU em 23/06/2023.</li>
+      <li><strong>Situação de vagas:</strong> esgotadas para 2026, conforme página oficial do curso.</li>
+    </ul>
+  </div>
+
+  <p class="mensagem-filtro" id="mensagem-filtro" hidden>
+    Nenhum curso encontrado para essa categoria.
+  </p>
+</section>

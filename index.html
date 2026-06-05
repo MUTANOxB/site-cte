@@ -27,32 +27,32 @@
       </div>
 
       <nav class="sidebar-nav">
-        <a href="#" onclick="carregarPagina('home')">
+        <a href="#" data-page="home" class="ativo">
           <i class="fas fa-home"></i>
           Home
         </a>
 
-        <a href="#" onclick="carregarPagina('institucional')">
+        <a href="#" data-page="institucional">
           <i class="fas fa-info-circle"></i>
           Institucional
         </a>
 
-        <a href="#" onclick="carregarPagina('cursos')">
+        <a href="#" data-page="cursos">
           <i class="fas fa-laptop-code"></i>
           Cursos
         </a>
 
-        <a href="#" onclick="carregarPagina('projetos')">
+        <a href="#" data-page="projetos">
           <i class="fas fa-project-diagram"></i>
           Projetos
         </a>
 
-        <a href="#" onclick="carregarPagina('docentes')">
+        <a href="#" data-page="docentes">
           <i class="fas fa-chalkboard-teacher"></i>
           Docentes
         </a>
         
-        <a href="#" onclick="carregarPagina('agenda')">
+        <a href="#" data-page="agenda">
           <i class="fa-regular fa-calendar"></i>
           Agenda
         </a>
@@ -164,66 +164,157 @@
   <script>
     const btnToggle = document.getElementById('btn-toggle');
     const sidebar = document.getElementById('sidebar');
-    const linksAbas = document.querySelectorAll('[data-page]');
-    const paginas = document.querySelectorAll('.pagina');
+    const linksAbas = document.querySelectorAll('.sidebar-nav a');
+    const conteudoPrincipal = document.getElementById('conteudo-principal');
 
-    // Abre e fecha o menu lateral
+    const telaMobile = window.matchMedia('(max-width: 768px)');
+
+    function ajustarMenuAutomaticamente() {
+      if (telaMobile.matches) {
+        sidebar.classList.add('fechado');
+        sidebar.classList.remove('aberto');
+        document.body.classList.remove('menu-aberto');
+      } else {
+        sidebar.classList.remove('fechado');
+        sidebar.classList.remove('aberto');
+        document.body.classList.remove('menu-aberto');
+      }
+    }
+
     btnToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('fechado');
+      if (telaMobile.matches) {
+        sidebar.classList.toggle('aberto');
+
+        if (sidebar.classList.contains('aberto')) {
+          document.body.classList.add('menu-aberto');
+        } else {
+          document.body.classList.remove('menu-aberto');
+        }
+      } else {
+        sidebar.classList.toggle('fechado');
+      }
     });
 
-    // Troca o conteúdo aberto
-    function abrirPagina(nomePagina) {
-      paginas.forEach(pagina => {
-        pagina.classList.remove('ativa');
-      });
+    async function carregarPagina(nomePagina) {
+      try {
+        const resposta = await fetch(`pages/${nomePagina}.html`);
 
-      const paginaEscolhida = document.getElementById(nomePagina);
+        if (!resposta.ok) {
+          throw new Error('Página não encontrada');
+        }
 
-      if (paginaEscolhida) {
-        paginaEscolhida.classList.add('ativa');
+        const conteudo = await resposta.text();
+        conteudoPrincipal.innerHTML = conteudo;
+
+        linksAbas.forEach(link => {
+          link.classList.remove('ativo');
+
+          if (link.getAttribute('data-page') === nomePagina) {
+            link.classList.add('ativo');
+          }
+        });
+
+        if (telaMobile.matches) {
+          sidebar.classList.remove('aberto');
+          document.body.classList.remove('menu-aberto');
+        }
+
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+
+      } catch (erro) {
+        conteudoPrincipal.innerHTML = `
+          <div class="erro-pagina">
+            <h2>Erro ao carregar a página</h2>
+            <p>Não foi possível carregar o conteúdo de "${nomePagina}".</p>
+          </div>
+        `;
+      }
+    }
+
+    function filtrarCursos(categoria) {
+      const moduloCursos = document.getElementById('modulo-cursos');
+
+      if (!moduloCursos) {
+        return;
       }
 
-      document.querySelectorAll('.sidebar-nav a').forEach(link => {
-        link.classList.remove('ativo');
+      const itens = moduloCursos.querySelectorAll('[data-categoria]');
+      const cursos = moduloCursos.querySelectorAll('.curso-card');
+      const botoes = moduloCursos.querySelectorAll('[data-course-filter]');
+      const mensagemFiltro = document.getElementById('mensagem-filtro');
+      const tabelaCursos = moduloCursos.querySelector('.tabela-cursos-box');
+      let totalVisivel = 0;
 
-        if (link.getAttribute('data-page') === nomePagina) {
-          link.classList.add('ativo');
+      itens.forEach(item => {
+        const categoriaItem = item.getAttribute('data-categoria');
+        const deveMostrar = categoria === 'todos' || categoriaItem === categoria;
+
+        item.hidden = !deveMostrar;
+      });
+
+      cursos.forEach(curso => {
+        const categoriaCurso = curso.getAttribute('data-categoria');
+        const deveMostrar = categoria === 'todos' || categoriaCurso === categoria;
+
+        if (deveMostrar) {
+          totalVisivel += 1;
         }
       });
 
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+      botoes.forEach(botao => {
+        botao.classList.toggle('ativo', botao.getAttribute('data-course-filter') === categoria);
       });
+
+      if (mensagemFiltro) {
+        mensagemFiltro.hidden = totalVisivel > 0;
+      }
+
+      if (tabelaCursos) {
+        tabelaCursos.hidden = totalVisivel === 0;
+      }
     }
 
-    // Faz os botões abrirem as abas
     linksAbas.forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault();
 
         const pagina = link.getAttribute('data-page');
-        abrirPagina(pagina);
+        carregarPagina(pagina);
       });
     });
 
-    // Carregar Pagina
-    async function carregarPagina(nomePagina) {
+    document.addEventListener('click', event => {
+      const clicouFora =
+        telaMobile.matches &&
+        document.body.classList.contains('menu-aberto') &&
+        !sidebar.contains(event.target) &&
+        !btnToggle.contains(event.target);
 
-      const resposta =
-          await fetch(`pages/${nomePagina}.html`);
-
-      const conteudo =
-          await resposta.text();
-
-      document.getElementById(
-          "conteudo-principal"
-      ).innerHTML = conteudo;
-    }
-    window.addEventListener('DOMContentLoaded', () => {
-    carregarPagina('home');
+      if (clicouFora) {
+        sidebar.classList.remove('aberto');
+        document.body.classList.remove('menu-aberto');
+      }
     });
+
+    document.addEventListener('click', event => {
+      const botaoFiltro = event.target.closest('[data-course-filter]');
+
+      if (!botaoFiltro) {
+        return;
+      }
+
+      filtrarCursos(botaoFiltro.getAttribute('data-course-filter'));
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      ajustarMenuAutomaticamente();
+      carregarPagina('home');
+    });
+
+    window.addEventListener('resize', ajustarMenuAutomaticamente);
   </script>
 
   <!-- JS das notícias do rodapé -->
