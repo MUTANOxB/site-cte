@@ -235,6 +235,113 @@ body {
   color: var(--amarelo-eduvale);
 }
 
+.lista-eventos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titulo-agenda {
+  color: var(--azul-eduvale);
+  font-size: 21px;
+  margin-top: 4px;
+}
+
+.titulo-anteriores {
+  margin-top: 18px;
+}
+
+.evento-card {
+  background-color: var(--branco);
+  padding: 22px;
+  border-radius: 8px;
+  border-left: 5px solid var(--azul-eduvale);
+  box-shadow: 0 4px 12px var(--sombra);
+  transition: 0.2s ease;
+}
+
+.evento-card:hover {
+  transform: translateY(-2px);
+}
+
+.evento-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.evento-topo h3 {
+  color: var(--azul-eduvale);
+}
+
+.evento-card p {
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+.evento-proximo {
+  border-left-color: var(--amarelo-eduvale);
+}
+
+.evento-anterior {
+  opacity: 0.78;
+  border-left-color: #999999;
+}
+
+.badge-evento {
+  flex-shrink: 0;
+  background-color: var(--amarelo-eduvale);
+  color: var(--azul-escuro);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sem-eventos {
+  text-align: center;
+}
+
+.sem-eventos h3 {
+  color: var(--azul-eduvale);
+  margin-bottom: 10px;
+}
+
+.secao-institucional {
+  margin: 24px 0;
+}
+
+.lista-principios {
+  padding-left: 20px;
+}
+
+.lista-principios li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.galeria-institucional {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 14px;
+}
+
+.galeria-institucional img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--sombra);
+  transition: transform 0.2s ease;
+}
+
+.galeria-institucional img:hover {
+  transform: scale(1.02);
+}
+
 .card:hover {
   transform: translateY(-4px);
 }
