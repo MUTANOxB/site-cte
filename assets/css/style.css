@@ -767,6 +767,52 @@ body {
     padding: 22px 16px 28px;
   }
 
+  .tabela-cursos-box {
+    overflow-x: visible;
+  }
+
+  .tabela-cursos {
+    min-width: 0;
+  }
+
+  .tabela-cursos thead {
+    display: none;
+  }
+
+  .tabela-cursos,
+  .tabela-cursos tbody,
+  .tabela-cursos tr,
+  .tabela-cursos td {
+    display: block;
+    width: 100%;
+  }
+
+  .tabela-cursos tr {
+    border: 1px solid rgba(28, 57, 134, 0.16);
+    border-top: 5px solid var(--azul-eduvale);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--branco);
+  }
+
+  .tabela-cursos td {
+    border: 0;
+    border-bottom: 1px solid rgba(28, 57, 134, 0.12);
+    padding: 12px 14px;
+  }
+
+  .tabela-cursos td:last-child {
+    border-bottom: 0;
+  }
+
+  .tabela-cursos td::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--azul-eduvale);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
   .cursos-cabecalho {
     flex-direction: column;
   }
