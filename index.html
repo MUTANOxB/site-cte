@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <!-- Arquivo CSS principal -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20260605-6">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260605-1">
 </head>
 
 <body>
@@ -164,245 +164,77 @@
   <script>
     const btnToggle = document.getElementById('btn-toggle');
     const sidebar = document.getElementById('sidebar');
-    const linksAbas = document.querySelectorAll('.sidebar-nav a');
+    const linksMenu = document.querySelectorAll('.sidebar-nav a');
     const conteudoPrincipal = document.getElementById('conteudo-principal');
 
-    const telaMobile = window.matchMedia('(max-width: 768px)');
+    function telaCelular() {
+      return window.innerWidth <= 768;
+    }
 
-    function ajustarMenuAutomaticamente() {
-      if (telaMobile.matches) {
+    function ajustarMenu() {
+      sidebar.classList.remove('aberto');
+      document.body.classList.remove('menu-aberto');
+
+      if (telaCelular()) {
         sidebar.classList.add('fechado');
-        sidebar.classList.remove('aberto');
-        document.body.classList.remove('menu-aberto');
       } else {
         sidebar.classList.remove('fechado');
-        sidebar.classList.remove('aberto');
-        document.body.classList.remove('menu-aberto');
       }
     }
 
     btnToggle.addEventListener('click', () => {
-      if (telaMobile.matches) {
+      if (telaCelular()) {
         sidebar.classList.toggle('aberto');
-
-        if (sidebar.classList.contains('aberto')) {
-          document.body.classList.add('menu-aberto');
-        } else {
-          document.body.classList.remove('menu-aberto');
-        }
+        document.body.classList.toggle('menu-aberto');
       } else {
         sidebar.classList.toggle('fechado');
       }
     });
 
     async function carregarPagina(nomePagina) {
-      try {
-        const resposta = await fetch(`pages/${nomePagina}.html?v=20260605-6`);
+      const resposta = await fetch(`pages/${nomePagina}.html?v=20260605-1`);
+      const conteudo = await resposta.text();
 
-        if (!resposta.ok) {
-          throw new Error('Página não encontrada');
-        }
+      conteudoPrincipal.innerHTML = conteudo;
+      executarScriptsDoModulo();
 
-        const conteudo = await resposta.text();
-        conteudoPrincipal.innerHTML = conteudo;
+      linksMenu.forEach(link => {
+        link.classList.toggle('ativo', link.getAttribute('data-page') === nomePagina);
+      });
 
-        if (nomePagina === 'agenda') {
-          carregarAgenda();
-        }
+      if (telaCelular()) {
+        sidebar.classList.remove('aberto');
+        document.body.classList.remove('menu-aberto');
+      }
 
-        linksAbas.forEach(link => {
-          link.classList.remove('ativo');
+      window.scrollTo(0, 0);
+    }
 
-          if (link.getAttribute('data-page') === nomePagina) {
-            link.classList.add('ativo');
-          }
+    function executarScriptsDoModulo() {
+      const scripts = conteudoPrincipal.querySelectorAll('script');
+
+      scripts.forEach(scriptAntigo => {
+        const scriptNovo = document.createElement('script');
+
+        Array.from(scriptAntigo.attributes).forEach(atributo => {
+          scriptNovo.setAttribute(atributo.name, atributo.value);
         });
 
-        if (telaMobile.matches) {
-          sidebar.classList.remove('aberto');
-          document.body.classList.remove('menu-aberto');
-        }
-
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-
-      } catch (erro) {
-        conteudoPrincipal.innerHTML = `
-          <div class="erro-pagina">
-            <h2>Erro ao carregar a página</h2>
-            <p>Não foi possível carregar o conteúdo de "${nomePagina}".</p>
-          </div>
-        `;
-      }
-    }
-
-    async function carregarAgenda() {
-      const listaEventos = document.getElementById('lista-eventos');
-
-      if (!listaEventos) {
-        return;
-      }
-
-      try {
-        const resposta = await fetch('assets/data/agenda.json?v=20260605-6');
-
-        if (!resposta.ok) {
-          throw new Error('Agenda não encontrada');
-        }
-
-        const eventos = await resposta.json();
-
-        eventos.sort((a, b) => new Date(a.data) - new Date(b.data));
-
-        const hoje = new Date();
-        hoje.setHours(0, 0, 0, 0);
-
-        const proximos = [];
-        const anteriores = [];
-
-        eventos.forEach(evento => {
-          const dataEvento = new Date(`${evento.data}T00:00:00`);
-
-          if (dataEvento >= hoje) {
-            proximos.push(evento);
-          } else {
-            anteriores.push(evento);
-          }
-        });
-
-        listaEventos.innerHTML = montarSecaoAgenda('Próximos Eventos', proximos, hoje, false);
-
-        if (anteriores.length > 0) {
-          listaEventos.innerHTML += montarSecaoAgenda('Eventos Anteriores', anteriores.reverse(), hoje, true);
-        }
-      } catch (erro) {
-        listaEventos.innerHTML = `
-          <div class="sobre-box sem-eventos">
-            <h3>
-              <i class="fa-regular fa-calendar"></i>
-              Agenda indisponível
-            </h3>
-            <p>Não foi possível carregar os eventos no momento.</p>
-          </div>
-        `;
-      }
-    }
-
-    function montarSecaoAgenda(titulo, eventos, hoje, anteriores) {
-      let html = `<h3 class="titulo-agenda ${anteriores ? 'titulo-anteriores' : ''}">${titulo}</h3>`;
-
-      if (eventos.length === 0) {
-        return html + `
-          <div class="sobre-box sem-eventos">
-            <h3>
-              <i class="fa-regular fa-calendar"></i>
-              Sem eventos futuros
-            </h3>
-            <p>Não há eventos agendados no momento.</p>
-          </div>
-        `;
-      }
-
-      eventos.forEach(evento => {
-        const dataEvento = new Date(`${evento.data}T00:00:00`);
-        const diferencaDias = Math.ceil((dataEvento - hoje) / (1000 * 60 * 60 * 24));
-        const classeEvento = anteriores ? 'evento-anterior' : diferencaDias <= 7 ? 'evento-proximo' : '';
-        const badgeProximo = !anteriores && diferencaDias <= 7
-          ? '<span class="badge-evento">Próximo</span>'
-          : '';
-
-        html += `
-          <article class="evento-card ${classeEvento}">
-            <div class="evento-topo">
-              <h3>${evento.titulo}</h3>
-              ${badgeProximo}
-            </div>
-            <p><strong>Data:</strong> ${dataEvento.toLocaleDateString('pt-BR')}</p>
-            <p><strong>Horário:</strong> ${evento.horario}</p>
-            <p><strong>Local:</strong> ${evento.local}</p>
-          </article>
-        `;
-      });
-
-      return html;
-    }
-
-    function filtrarCursos(categoria) {
-      const moduloCursos = document.getElementById('modulo-cursos');
-
-      if (!moduloCursos) {
-        return;
-      }
-
-      const itens = moduloCursos.querySelectorAll('[data-categoria]');
-      const cursos = moduloCursos.querySelectorAll('.curso-card');
-      const botoes = moduloCursos.querySelectorAll('[data-course-filter]');
-      const mensagemFiltro = document.getElementById('mensagem-filtro');
-      const tabelaCursos = moduloCursos.querySelector('.tabela-cursos-box');
-      let totalVisivel = 0;
-
-      itens.forEach(item => {
-        const categoriaItem = item.getAttribute('data-categoria');
-        const deveMostrar = categoria === 'todos' || categoriaItem === categoria;
-
-        item.hidden = !deveMostrar;
-      });
-
-      cursos.forEach(curso => {
-        const categoriaCurso = curso.getAttribute('data-categoria');
-        const deveMostrar = categoria === 'todos' || categoriaCurso === categoria;
-
-        if (deveMostrar) {
-          totalVisivel += 1;
-        }
-      });
-
-      botoes.forEach(botao => {
-        botao.classList.toggle('ativo', botao.getAttribute('data-course-filter') === categoria);
-      });
-
-      if (mensagemFiltro) {
-        mensagemFiltro.hidden = totalVisivel > 0;
-      }
-
-      if (tabelaCursos) {
-        tabelaCursos.hidden = totalVisivel === 0;
-      }
-    }
-
-    function abrirAbaCurso(nomeAba) {
-      const moduloCursos = document.getElementById('modulo-cursos');
-
-      if (!moduloCursos) {
-        return;
-      }
-
-      const abas = moduloCursos.querySelectorAll('.curso-tab');
-      const botoes = moduloCursos.querySelectorAll('[data-course-tab]');
-
-      abas.forEach(aba => {
-        aba.classList.toggle('ativo', aba.id === nomeAba);
-      });
-
-      botoes.forEach(botao => {
-        botao.classList.toggle('ativo', botao.getAttribute('data-course-tab') === nomeAba);
+        scriptNovo.textContent = scriptAntigo.textContent;
+        scriptAntigo.replaceWith(scriptNovo);
       });
     }
 
-    linksAbas.forEach(link => {
+    linksMenu.forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault();
-
-        const pagina = link.getAttribute('data-page');
-        carregarPagina(pagina);
+        carregarPagina(link.getAttribute('data-page'));
       });
     });
 
     document.addEventListener('click', event => {
       const clicouFora =
-        telaMobile.matches &&
+        telaCelular() &&
         document.body.classList.contains('menu-aberto') &&
         !sidebar.contains(event.target) &&
         !btnToggle.contains(event.target);
@@ -413,32 +245,12 @@
       }
     });
 
-    document.addEventListener('click', event => {
-      const botaoFiltro = event.target.closest('[data-course-filter]');
-
-      if (!botaoFiltro) {
-        return;
-      }
-
-      filtrarCursos(botaoFiltro.getAttribute('data-course-filter'));
-    });
-
-    document.addEventListener('click', event => {
-      const botaoAbaCurso = event.target.closest('[data-course-tab]');
-
-      if (!botaoAbaCurso) {
-        return;
-      }
-
-      abrirAbaCurso(botaoAbaCurso.getAttribute('data-course-tab'));
-    });
-
     window.addEventListener('DOMContentLoaded', () => {
-      ajustarMenuAutomaticamente();
+      ajustarMenu();
       carregarPagina('home');
     });
 
-    window.addEventListener('resize', ajustarMenuAutomaticamente);
+    window.addEventListener('resize', ajustarMenu);
   </script>
 
   <!-- JS das notícias do rodapé -->
@@ -515,5 +327,6 @@
 
     carregarNoticias();
   </script>
+  <script src="assets/js/agenda.js"></script>
 </body>
 </html>
